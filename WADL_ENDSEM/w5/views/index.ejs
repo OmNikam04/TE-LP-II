@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SongMaster</title>
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+    <script src='../static/js/bootstrap.min.js'></script>
+</head>
+
+<body>
+    <a href="/api/songs">Go to next page</a>
+    <div class="container w-50">
+        <h4>Song Records Are kepts safe here!!</h4>
+        <p>Enter the details of sogns so we will keep them in our memory</p>
+        <form novalidate action="/api/addSongs" method="post" class="form">
+            <div class="d-flex justify-content-center align-items-start gap-2 flex-column">
+                <div class="form-floating w-100">
+                    <input type="text" id="songname" name="songName"  class="form-control" placeholder="hello">
+                    <label for="songname" class="form-label">Enter name of song</label>
+                </div>
+        
+                <div class="form-floating w-100">
+                    <input type="text" id="movie" name="film" class="form-control form-control-sm" placeholder="hello">
+                    <label for="movie" class="form-label">Movie where above song is introduced?</label>
+                </div>
+        
+                <div class="form-floating w-100">
+                    <input type="text" id="director" name="musicDirector" class="form-control form-control-sm" placeholder="head">
+                    <label for="director" class="form-label">Music Director</label>
+                </div>
+        
+                <div class="form-floating w-100">
+                    <input type="text" id="singer" name="singer" class="form-control form-control-sm" placeholder="head">
+                    <label for="singer" class="form-label">Singer</label>
+                </div>
+                <div class="w-100 d-flex justify-content-around align-items-center">
+                    <button type="submit" class="btn btn-outline-dark btn-sm">Submit</button>
+                    <div><a href="/api/songs"><button class="btn btn-outline-success btn-sm">See Records</button></a></div>
+                </div>
+            </div>
+        </form>
+        
+    </div>
+
+    <script>
+        const form = document.querySelector("form")
+        console.log('hello')
+        form.addEventListener('submit', e => {
+            e.preventDefault()
+            form.classList.add('was-validated')
+        })
+    </script>
+</body>
+
+</html>

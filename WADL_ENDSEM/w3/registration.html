@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration form</title>
+    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
+    <script src='../assets/bootstrap/js/bootstrap.min.js'></script>
+    <style>
+        body {
+            background-color: rgb(240, 254, 255);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-5 d-flex flex-column justify-content-center shadow">
+        <form novalidate class="row">
+            <div class="col rounded-end-0 rounded-2 g-3 p-4 pb-5 bg-white">
+
+                <div class="form-row g-2">
+
+                    <h4 class="px-2 py-1">General Information</h4>
+
+                    <div class="mt-2 col form-floating">
+                        <input type="text" id="name" class="form-control" placeholder=" ">
+                        <label for="name" class="form-label">Name</label>
+                    </div>
+                    <div class="mt-2 col form-floating">
+                        <input type="email" id="email" class="form-control" placeholder=" ">
+                        <label for="email" class="form-label">Email</label>
+                    </div>
+                    <div class="mt-2 col form-floating">
+                        <input type="password" id="password" class="form-control" placeholder=" ">
+                        <label for="password" class="form-label">Password</label>
+                    </div>
+                    <div class="mt-2 col form-floating">
+                        <input type="password" id="cpassword" class="form-control" placeholder=" ">
+                        <label for="cpassword" class="form-label">Confirm Password</label>
+                    </div>
+
+                    <div class="d-flex gap-2 mt-4">
+                        <div class="col form-floating">
+                            <input type="date" id="birthdate" class="form-control" placeholder=" ">
+                            <label for="birthdate" class="form-label">Birthdate</label>
+                        </div>
+                        <div class="col form-floating">
+                            <input type="tel" id="phone" class="form-control" placeholder=" ">
+                            <label for="phone" class="form-label">Phone no</label>
+                        </div>
+                    </div>
+                    <div class="mt-2 col">
+                        <label for="genders" class="form-label">Gender:</label>
+                        <br />
+                        <div class="form-check-inline">
+                            <input class="form-check-input" type="radio" name="gender" id="male" value="Male" checked>
+                            <label class="form-check-label" for="male">
+                                Male
+                            </label>
+                        </div>
+                        <div class="form-check-inline">
+                            <input class="form-check-input" type="radio" name="gender" id="female" value="Female">
+                            <label class="form-check-label" for="female">
+                                Female
+                            </label>
+                        </div>
+                        <div class="form-check-inline">
+                            <input class="form-check-input" type="radio" name="gender" id="othergender" value="Other">
+                            <label class="form-check-label" for="othergender">
+                                Other
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col rounded-start-0 rounded-2 g-3 p-4 pb-5 bg-white">
+
+                <div class="form-row g-2">
+
+                    <h4 class="px-2 py-1">Other Information</h4>
+
+
+                    <div class="mt-2 col form-floating">
+                        <input type="text" id="street" class="form-control" placeholder=" ">
+                        <label for="street" class="form-label">Street</label>
+                    </div>
+                    <div class="mt-2 col form-floating">
+                        <input type="text" id="suite" class="form-control" placeholder=" ">
+                        <label for="suite" class="form-label">Suite</label>
+                    </div>
+                    <div class="mt-2 col form-floating">
+                        <input type="text" id="city" class="form-control" placeholder=" ">
+                        <label for="city" class="form-label">City</label>
+                    </div>
+                    <div class="d-flex gap-2 mt-2">
+                        <div class="mt-2 col form-floating">
+                            <input type="text" id="zipcode" class="form-control" placeholder=" ">
+                            <label for="zipcode" class="form-label">Zipcode</label>
+                        </div>
+                        <div class="mt-2 col form-floating">
+                            <input type="text" id="lat" class="form-control" placeholder=" ">
+                            <label for="lat" class="form-label">Latitude</label>
+                        </div>
+                        <div class="mt-2 col form-floating">
+                            <input type="text" id="lng" class="form-control" placeholder=" ">
+                            <label for="lng" class="form-label">Longitude</label>
+                        </div>
+                    </div>
+                    <div class="mt-2 col form-floating">
+                        <input type="text" id="website" class="form-control" placeholder=" ">
+                        <label for="website" class="form-label">Website</label>
+                    </div>
+                    <div class="mt-2 col form-floating">
+                        <input type="text" id="company" class="form-control" placeholder=" ">
+                        <label for="company" class="form-label">Company</label>
+                    </div>
+
+                </div>
+
+            </div>
+            <button type="submit" class="btn btn-dark">Submit</button>
+        </form>
+    </div>
+    <script>
+        const form = document.querySelector("form")
+
+        form.addEventListener("submit", e => {
+            e.preventDefault()
+            form.classList.add('was-validated')
+            // Form data collection
+            const formData = {
+                id: 1, // Assuming you are not collecting this from the user
+                name: document.getElementById("name").value,
+                email: document.getElementById("email").value,
+                gender: document.querySelector('input[name="gender"]:checked').value,
+                address: {
+                    street: document.getElementById("street").value,
+                    suite: document.getElementById("suite").value,
+                    city: document.getElementById("city").value,
+                    zipcode: document.getElementById("zipcode").value,
+                    geo: {
+                        lat: document.getElementById("lat").value,
+                        lng: document.getElementById("lng").value
+                    }
+                },
+                phone: document.getElementById("phone").value,
+                website: document.getElementById("website").value,
+                company: document.getElementById("company").value
+            };
+            console.log(formData)
+            // POST request to API
+            fetch('https://jsonplaceholder.typicode.com/users', {
+                method: 'POST',
+                body: JSON.stringify(formData),
+                headers: {
+                    'Content-type': 'application/json; charset=UTF-8',
+                },
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Success:', data);
+                    // Display the data
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
+        })
+    </script>
+</body>
+
+</html>
