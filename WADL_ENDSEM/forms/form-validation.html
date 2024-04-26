@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap forms</title>
+    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
+    <script src='../assets/bootstrap/js/bootstrap.min.js'></script>
+</head>
+<body>
+    <form novalidate class="container my-3">
+        <div class="form-floating">
+            <input type="email" id="text" class="form-control" placeholder="Enter you Email" required>
+            <label for="text" class="form-label">Email</label>
+            <div class="invalid-feedback">Incorrect Email</div>
+            <div class="valid-feedback">Correct Email</div>
+        </div>
+        <button class="btn btn-primary mt-3">Submit</button>
+    </form>
+
+    <script>
+        const form = document.querySelector("form")
+        form.addEventListener("submit", e => {
+            if(!form.checkValidity()){
+                e.preventDefault();
+            }
+
+            form.classList.add('was-validated')
+        })
+    </script>
+</body>
+</html>
