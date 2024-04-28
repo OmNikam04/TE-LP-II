@@ -1,0 +1,34 @@
+[
+    {
+        "songName": "Nach baliye",
+        "film": "Alladin",
+        "musicDirector": "A.R. Rehman",
+        "singer": "Kishor da",
+        "actor": "actor1",
+        "actress": "actress"
+    },
+    {
+        "songName": "Tum Mile",
+        "film": "Tum Mile",
+        "musicDirector": "Pritam",
+        "singer": "K.K.",
+        "actor": "Emraan Hashmi",
+        "actress": "Soha Ali Khan"
+    },
+    {
+        "songName": "Kal Ho Na Ho",
+        "film": "Kal Ho Na Ho",
+        "musicDirector": "Shankar-Ehsaan-Loy",
+        "singer": "Sonu Nigam",
+        "actor": "Shah Rukh Khan",
+        "actress": "Preity Zinta"
+    },
+    {
+        "songName": "Gerua",
+        "film": "Dilwale",
+        "musicDirector": "Pritam",
+        "singer": "Arijit Singh",
+        "actor": "Shah Rukh Khan",
+        "actress": "Kajol"
+    }
+]
