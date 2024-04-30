@@ -3,7 +3,11 @@ function buildTable(rows, cols, startValue, table) {
         var row = table.insertRow(i);
         for (var j = 0; j < cols; j++) {
             var cell = row.insertCell(j);
-            cell.textContent = startValue++;
+            if(i==0)
+                cell.textContent = startValue++;
+            else
+                cell.textContent = parseInt(table.rows[0].cells[j].textContent) * (i+1);
+
         }
     }
 }
