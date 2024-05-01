@@ -31,7 +31,6 @@ const AddSongs = ({onAdd, onFilter})=>{
                 actor: '',
                 actress: ''
             })
-
             onAdd()
         } catch (error) {
             console.error('Error adding song: ', error);
