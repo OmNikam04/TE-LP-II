@@ -1,6 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import { fetchSongs, deleteSong, addSong, filterSongs } from "../api";
+import { fetchSongs, deleteSong, addSong, filterSongs, updateSong } from "../api";
 import DataTable from "./TableView/DataTable";
 import AddSongs from "./AddSongs/AddSongs";
 const Home = () => {
@@ -42,6 +42,20 @@ const Home = () => {
     }
   };
 
+  const handleUpdate = async (updatedSong,updatedFields) => {
+    try {
+      // Assuming you have a way to get updated song data from the user interface
+      // In this example, I'm just updating the song name
+      // const updatedFields = { songName: 'Updated Song Name' };
+      console.log('hmm', updatedFields)
+      await updateSong(updatedSong, updatedFields);
+      const updatedSongs = await fetchSongs();
+      setAllSongs(updatedSongs);
+    } catch (error) {
+      console.error('Error updating song: ', error);
+    }
+  };
+
   return (
     <>
       <div className="container w-100 mt-2">
@@ -49,7 +63,7 @@ const Home = () => {
         <div className="w-100 mt-5">
           <h1>List of songs</h1>
           {allSongs.length > 0 ? (
-            <DataTable allSongs={allSongs} onDelete={handleDelete} />
+            <DataTable allSongs={allSongs} onDelete={handleDelete} onUpdate={handleUpdate} />
           ) : (
             <h4>No songs found</h4>
           )}

@@ -13,7 +13,7 @@ function buildTable(rows, cols, startValue, table) {
 }
 
 const form = document.querySelector('form')
-form.addEventListener("submit", e=>{
+form.addEventListener('submit', e=>{
     e.preventDefault();
 
     form.classList.add('was-validated')
