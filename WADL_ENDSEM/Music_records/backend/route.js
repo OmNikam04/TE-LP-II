@@ -3,20 +3,17 @@ import SongsModel from './model.js';
 
 const router = express.Router();
 
-// List specified Music director songs
-// List specified music director songs sung by specified singer
 router.get('/songs', async (req, res) => {
     try {
-        const { songName, film, singer, actor, actress, musicDirector } = req.body;
+        const { songName, film, singer, actor, actress, musicDirector } = req.query;
         let query = {};
 
-        // Build the query dynamically based on provided parameters
-        if (songName) query.songName = songName;
-        if (film) query.film = film;
-        if (singer) query.singer = singer;
-        if (actor) query.actor = actor;
-        if (actress) query.actress = actress;
-        if (musicDirector) query.musicDirector = musicDirector;
+        if (songName && songName !== "") query.songName = songName;
+        if (film && film !== "") query.film = film;
+        if (singer && singer !== "") query.singer = singer;
+        if (actor && actor !== "") query.actor = actor;
+        if (actress && actress !== "") query.actress = actress;
+        if (musicDirector && musicDirector !== "") query.musicDirector = musicDirector;
 
         const songs = await SongsModel.find(query);
 
@@ -30,7 +27,6 @@ router.get('/songs', async (req, res) => {
         res.status(500).json({ success: false, message: 'Internal server error' });
     }
 });
-
 
 
 // Delete song which I don't like

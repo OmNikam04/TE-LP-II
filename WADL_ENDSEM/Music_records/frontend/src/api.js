@@ -24,3 +24,39 @@ export const deleteSong = async(songId) =>{
         throw error
     }
 }
+
+export const addSong = async(songData) => {
+    try {
+        const res = await fetch('http://localhost:4000/api/songs', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(songData)
+        });
+
+        if (!res.ok) {
+            throw new Error('Failed to add song');
+        }
+    } catch (error) {
+        console.error('Error adding song: ', error);
+        throw error;
+    }
+}
+
+
+export const filterSongs = async(songData) =>{
+    try {
+        const queryParams = new URLSearchParams(songData).toString()
+        const res = await fetch(`http://localhost:4000/api/songs?${queryParams}`)
+
+        if(!res.ok){
+            throw new Error('Failed to filter songs')
+        }
+        const data = await res.json()
+        return data.data;
+    } catch (error) {
+        console.error('Error filtering song: ', error);
+        throw error;
+    }
+}

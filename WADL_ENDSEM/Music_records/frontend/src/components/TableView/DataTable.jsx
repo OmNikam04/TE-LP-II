@@ -19,7 +19,7 @@ const DataTable = ({allSongs, onDelete})=>{
                 <tbody>
                     {allSongs.map((item)=>{
                         return (
-                            <tr>
+                            <tr key={item._id}>
                                 <td>{item.songName}</td>
                                 <td>{item.film}</td>
                                 <td>{item.musicDirector}</td>
