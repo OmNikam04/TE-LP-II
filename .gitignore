@@ -1,3 +1,11 @@
 node_modules
 test.js
 practice
+
+sudo apt install net-tools
+ifconfig
+scp - it will help us to copy files from one vm to other 
+
+scp transfer.txt vagrant@172.158.2.5:/home/vagrant
+
+file new preference
